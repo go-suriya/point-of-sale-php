@@ -3,13 +3,11 @@
     <li class="nav-item">
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
     </li>
-
     <li class="nav-item">
       <a class="nav-link <?php if ($menu == "index") {
                             echo "active";
                           } ?>" href="index.php"><i class="fas fa-home"></i> Home</a>
     </li>
-
   </ul>
 
   <!-- Right navbar links -->
@@ -18,9 +16,7 @@
       <a href="../logout.php" class="nav-link ">
         <i class="fa fa-power-off"></i> Logout
       </a>
-
     </li>
   </ul>
 </nav>
-<!--  http://fordev22.com/ -->
 <!-- /.navbar -->

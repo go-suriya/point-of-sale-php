@@ -58,8 +58,6 @@ if (isset($_POST['product']) && $_POST['product'] == "add") {
   $p_qty = mysqli_real_escape_string($condb, $_POST["p_qty"]);
   $p_img2 = mysqli_real_escape_string($condb, $_POST["p_img"]);
 
-  // $file1 = $_POST['file1']; //รับไฟล์เดิม
-
   $date1 = date("Ymd_His");
   $numrand = (mt_rand());
   $p_img = (isset($_POST['p_img']) ? $_POST['p_img'] : '');
@@ -70,7 +68,6 @@ if (isset($_POST['product']) && $_POST['product'] == "add") {
     $type = strrchr($_FILES['p_img']['name'], ".");
     $newname = $numrand . $date1 . $type;
     $path_copy = $path . $newname;
-    // $path_link="../p_img/".$newname;
     move_uploaded_file($_FILES['p_img']['tmp_name'], $path_copy);
   } else {
     $newname = $p_img2;

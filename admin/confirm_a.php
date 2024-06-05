@@ -9,6 +9,7 @@
 
 error_reporting(error_reporting() & ~E_NOTICE);
 session_start();
+
 $mem_id = $_SESSION['mem_id'];
 $mem_address = $_SESSION['mem_address'];
 ?>
@@ -22,20 +23,14 @@ $mem_address = $_SESSION['mem_address'];
 
 <!-- Main content -->
 <section class="content">
-
-
   <div class="card card-gray">
     <div class="card-header ">
       <h3 class="card-title">ยืนยันการสั่งซื้อ</h3>
     </div>
     <br>
 
-
-
     <div class="card-body">
-
       <div class="col-md-12">
-
         <div class="container">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12">
@@ -111,15 +106,12 @@ $mem_address = $_SESSION['mem_address'];
                     </div>
                   </div>
 
-
-
                   <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">ยอดเงินที่ รับชำระ</label>
                     <div class="col-sm-5">
                       <input type="number" min="<?php echo $total; ?>" name="pay_amount2" required class="form-control" id="" placeholder="">
                     </div>
                   </div>
-
 
                   <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label"></label>
@@ -128,11 +120,8 @@ $mem_address = $_SESSION['mem_address'];
 
                       <button type="submit" class="btn  btn-primary btn-block">ยืนยันการสั่งซื้อ</button>
                     </div>
-
-
                   <?php } else { ?>
                     <a href="#" target="" class="btn btn-success" onclick="window.print()">Print</a>
-
                   <?php } ?>
 
               </form>
@@ -140,23 +129,9 @@ $mem_address = $_SESSION['mem_address'];
           </div>
         </div>
 
-
-
-
-
       </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
     <div class="card-footer">
 
     </div>
@@ -165,7 +140,6 @@ $mem_address = $_SESSION['mem_address'];
 <!-- /.content -->
 
 <?php include('footer.php'); ?>
-
 <script>
   $(function() {
     $(".datatable").DataTable();
@@ -180,7 +154,6 @@ $mem_address = $_SESSION['mem_address'];
     // });
   });
 </script>
-
 </body>
 
 </html>

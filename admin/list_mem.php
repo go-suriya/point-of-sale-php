@@ -1,7 +1,6 @@
-<?php
-$menu = "member";
-?>
+<?php $menu = "member"; ?>
 <?php include("header.php"); ?>
+
 <?php
 $query_member = "SELECT * FROM tbl_member" or die("Error : " . mysqli_error($condb));
 $rs_member = mysqli_query($condb, $query_member);
@@ -18,9 +17,7 @@ $rs_member = mysqli_query($condb, $query_member);
     <div class="card-header ">
       <h3 class="card-title">รายการสมาชิก</h3>
       <div align="right">
-
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> เพิ่มข้อมูล สมาชิก</button>
-
       </div>
     </div>
     <br>
@@ -120,9 +117,6 @@ $rs_member = mysqli_query($condb, $query_member);
             <label for="" class="col-sm-2 col-form-label">img</label>
             <div class="col-sm-10">
 
-
-
-
               เลือกไฟล์ใหม่<br>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="mem_img" name="mem_img" onchange="readURL(this);">
@@ -132,8 +126,6 @@ $rs_member = mysqli_query($condb, $query_member);
               <img id="blah" src="#" alt="your image" width="300" />
             </div>
           </div>
-
-
 
         </div>
         <div class="modal-footer">
@@ -172,7 +164,6 @@ $rs_member = mysqli_query($condb, $query_member);
     // });
   });
 </script>
-
 </body>
 
 </html>

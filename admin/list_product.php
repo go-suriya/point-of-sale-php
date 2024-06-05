@@ -1,7 +1,6 @@
-<?php
-$menu = "product"
-?>
+<?php $menu = "product" ?>
 <?php include("header.php"); ?>
+
 <?php
 $query_product = "
 SELECT *
@@ -28,7 +27,6 @@ $rs_product = mysqli_query($condb, $query_product);
     <br>
     <div class="card-body">
       <div class="row">
-
         <div class="col-md-12">
           <table id="example1" class="table table-bordered  table-hover table-striped">
             <thead>
@@ -40,10 +38,8 @@ $rs_product = mysqli_query($condb, $query_product);
                 <th width="20%">Name</th>
                 <th width="10%">price</th>
                 <th width="10%">qty</th>
-
                 <th width="10%">edit</th>
                 <th width="10%">del</th>
-
               </tr>
             </thead>
             <tbody>
@@ -64,7 +60,6 @@ $rs_product = mysqli_query($condb, $query_product);
               <?php
                 @$total += $row_product['p_qty'];
               }
-
               //echo $total;
               ?>
             </tbody>
@@ -72,54 +67,18 @@ $rs_product = mysqli_query($condb, $query_product);
           <?php if (isset($_GET['d'])) { ?>
             <div class="flash-data" data-flashdata="<?php echo $_GET['d']; ?>"></div>
           <?php } ?>
-          <!-- <script>
-            $('.del-btn').on('click', function(e) {
-              e.preventDefault();
-              const href = $(this).attr('href')
-              Swal.fire({
-                imageUrl: '../logo_fordev22_2.png',
-                imageWidth: 250,
-                //imageHeight: 100,
-                title: 'Are you sure to delete?',
-                text: "You won't be able to revert this!",
-                // icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                if (result.value) {
-                  document.location.href = href;
-                }
-              })
-            })
-            const flashdata = $('.flash-data').data('flashdata')
-            if (flashdata) {
-              swal.fire({
-                type: 'success',
-                title: 'Record Deleted',
-                text: 'Record has been deleted',
-                icon: 'success'
-              })
-            }
-          </script> -->
-
         </div>
-
       </div>
     </div>
     <div class="card-footer">
-
     </div>
-
   </div>
-
 </section>
+
 <!-- /.content -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <form action="product_db.php" method="POST" enctype="multipart/form-data">
-
       <input type="hidden" name="product" value="add">
       <div class="modal-content">
         <div class="modal-header bg-dark">

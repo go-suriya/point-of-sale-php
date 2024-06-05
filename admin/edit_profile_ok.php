@@ -20,12 +20,12 @@ $date1 = date("Ymd_His");
 $numrand = (mt_rand());
 $mem_img = (isset($_POST['mem_img']) ? $_POST['mem_img'] : '');
 $upload = $_FILES['mem_img']['name'];
+
 if ($upload != '') {
   $path = "../mem_img/";
   $type = strrchr($_FILES['mem_img']['name'], ".");
   $newname = $numrand . $date1 . $type;
   $path_copy = $path . $newname;
-  // $path_link="mem_img/".$newname;
   move_uploaded_file($_FILES['mem_img']['tmp_name'], $path_copy);
 } else {
   $newname = $mem_img2;
@@ -44,7 +44,6 @@ mysqli_close($condb);
 
 if ($result) {
   echo "<script type='text/javascript'>";
-  //echo "alert('แก้ไขข้อมูลเรียบร้อย');";
   echo "window.location = 'edit_profile.php?mem_id=$mem_id&&mem_editp=mem_editp'; ";
   echo "</script>";
 } else {

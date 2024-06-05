@@ -1,6 +1,6 @@
 <?php
 $order_id = mysqli_real_escape_string($condb, $_GET['order_id']);
-//echo $order_id;
+
 $sqlpay = "SELECT d.* , p.* ,
 				m.mem_name,o.order_date,o.order_status
 				FROM tbl_order_detail AS d
@@ -14,12 +14,7 @@ $querypay = mysqli_query($condb, $sqlpay)
 
 $rowmember = mysqli_fetch_array($querypay);
 $st = $rowmember['order_status'];
-
-
-
-
 ?>
-
 
 <center>
   <h4>รายการสั่งซื้อ<br>
@@ -31,7 +26,6 @@ $st = $rowmember['order_status'];
 </center>
 
 <table border="0" align="center" class="table table-hover table-bordered table-striped">
-
   <tr>
     <td width="5%" align="center">ลำดับสินค้า</td>
     <td width="10%" align="center">img</td>
@@ -39,86 +33,57 @@ $st = $rowmember['order_status'];
     <td width="10%" align="center">ราคา/หน่วย</td>
     <td width="10%" align="center">จำนวน</td>
     <td width="15%" align="center">รวม(บาท)</td>
-
   </tr>
+
   <?php
-
   $total = 0;
-
-
-  foreach ($querypay as $rspay) {
-
-
-    $total += $rspay['total']; //ราคารวม ทั้ง ตระกร้า
-    echo "<tr>";
-    echo "<td>" . @$i += 1 . "</td>";
-    echo "<td>" . "<img src='../p_img/" . $rspay['p_img'] . "' width='100%'>" . "</td>";
-    echo "<td>" . $rspay["p_name"] . "</td>";
-    echo "<td align='right'>" . number_format($rspay["p_price"], 2) . "</td>";
-    echo "<td align='right'>";
-
-
-
-
-    echo "<input type='number' name='p_c_qty' value='$rspay[p_c_qty]' size='2'class='form-control' disabled/></td>";
-
-
-    echo "<td align='right'>" . number_format($rspay['total'], 2) . "</td>";
-  }
-  include('../convertnumtothai.php');
+  $i = 0;
   ?>
+  <?php foreach ($querypay as $rspay) : ?>
+    <?php
+    $total += $rspay['total']; // ราคารวม ทั้ง ตระกร้า
+    $i += 1;
+    ?>
+    <tr>
+      <td><?php echo $i; ?></td>
+      <td><img src="../p_img/<?php echo $rspay['p_img']; ?>" width="100%"></td>
+      <td><?php echo $rspay["p_name"]; ?></td>
+      <td align="right"><?php echo number_format($rspay["p_price"], 2); ?></td>
+      <td align="right">
+        <input type="number" name="p_c_qty" value="<?php echo $rspay['p_c_qty']; ?>" size="2" class="form-control" disabled />
+      </td>
+      <td align="right"><?php echo number_format($rspay['total'], 2); ?></td>
+    </tr>
+  <?php endforeach; ?>
+  <?php include('../convertnumtothai.php'); ?>
 
   <tr>
-
     <td></td>
-
     <td align='right' colspan="3">
       <b>ราคารวม
         ( <?php echo Convert($total); ?> )
-
       </b>
-
       <br>
-
       <b>ยอดเงินที่รับชำระ
         ( <?php echo Convert($rowmember['pay_amount2']); ?> )
-
       </b>
-
       <br>
       <?php
       $pay_amount3 = $rowmember['pay_amount2'] - $total;
-      //echo $pay_amount3;
       ?>
       <b>เงินทอน
         ( <?php echo Convert($pay_amount3); ?> )
-
       </b>
-
     </td>
 
-
     <td align='right' colspan='2'>
-
-
       <b><?php echo number_format($total, 2); ?> Baht</b>
-
       <br>
       <b><?php echo number_format($rowmember['pay_amount2'], 2); ?> Baht</b>
       <br>
       <b><?php echo number_format($pay_amount3, 2); ?> Baht</b>
-
-
-
     </td>
-
   </tr>
-
-
-
-
-
-
 </table>
 <br>
 

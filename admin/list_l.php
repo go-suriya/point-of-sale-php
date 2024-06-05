@@ -5,11 +5,6 @@
 <?php
 $query_product = "SELECT * FROM tbl_product" or die("Error : " . mysqli_error($condb));
 $rs_product = mysqli_query($condb, $query_product);
-
-// $query_product = " SELECT * FROM tbl_product ORDER BY rand()" or die
-// ("Error : ".mysqlierror($query_product));
-// $rs_product = mysqli_query($condb, $query_product);
-//echo $rs_product;
 ?>
 
 <?php
@@ -20,18 +15,22 @@ $row = mysqli_fetch_row($query);
 $rows = $row[0];
 $page_rows = 6;  //จำนวนข้อมูลที่ต้องการให้แสดงใน 1 หน้า  ตย. 5 record / หน้า
 $last = ceil($rows / $page_rows);
+
 if ($last < 1) {
   $last = 1;
 }
+
 $pagenum = 1;
 if (isset($_GET['pn'])) {
   $pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
 }
+
 if ($pagenum < 1) {
   $pagenum = 1;
 } else if ($pagenum > $last) {
   $pagenum = $last;
 }
+
 $limit = 'LIMIT ' . ($pagenum - 1) * $page_rows . ',' . $page_rows;
 $nquery = mysqli_query($condb, "SELECT * from  tbl_product ORDER BY p_id DESC $limit");
 
@@ -48,9 +47,6 @@ if ($last != 1) {
     }
   }
 
-
-  //$paginationCtrls .= ''.$pagenum.' &nbsp; ';
-
   $paginationCtrls .= '<a href=""class="btn btn-danger">' . $pagenum . '</a> &nbsp; ';
 
   for ($i = $pagenum + 1; $i <= $last; $i++) {
@@ -62,7 +58,6 @@ if ($last != 1) {
 
   if ($pagenum != $last) {
     $next = $pagenum + 1;
-
     $paginationCtrls .= ' &nbsp;<a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $next . '" class="btn btn-info">Next</a> ';
   }
 }
@@ -98,22 +93,18 @@ if ($last != 1) {
                      <button class="btn btn-outline-success" type="submit">ค้นหา</button>
                      </span> -->
               </div>
-
             </form>
+
             <br>
             <?php if ($row > 0) { ?>
               <div class="row">
-
                 <?php while ($rs_prd = mysqli_fetch_array($nquery)) { ?>
-
                   <div class="col-md-4">
-
-                    <div class="card" style="">
+                    <div class="card">
                       <img width="100%" src="../p_img/<?php echo $rs_prd['p_img']; ?>" class="card-img-top" alt="<?php echo $rs_prd['p_name']; ?>" title="<?php echo $rs_prd['p_name']; ?>">
                       <div class="card-body">
                         <h5 class="card-title"><?php echo $rs_prd['p_name']; ?></h5>
                         <p class="card-text"><?php echo number_format($rs_prd['p_price'], 2); ?> Baht</p>
-
                         <?php if ($rs_prd['p_qty'] > 0) { ?>
                           <center>
                             <img alt="QRCode" src="https://qrcode.tec-it.com/API/QRCode?data=<?php echo $rs_prd['p_id']; ?>" width="150" height="150" />
@@ -128,18 +119,12 @@ if ($last != 1) {
                         <?php } ?>
                       </div>
                     </div>
-
-
                   </div>
                 <?php } ?>
-
-
               </div>
-
             <?php } else { ?>
             <?php } ?>
           </div>
-
 
           <div class="col-md-5">
             <?php include('cart_a_2.php'); ?>
@@ -147,41 +132,20 @@ if ($last != 1) {
 
         </div>
 
-
       </div>
 
     </div>
 
-
-
-
-
-
-
-
-
-
     <div class="card-footer">
       <center>
         <div id="pagination_controls">
-
           <?php echo $paginationCtrls; ?>
-
         </div>
       </center>
     </div>
 
-
-
-
 </section>
 <!-- /.content -->
-
-
-
-
-
-
 
 <?php include('footer.php'); ?>
 
@@ -199,7 +163,6 @@ if ($last != 1) {
     // });
   });
 </script>
-
 </body>
 
 </html>

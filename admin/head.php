@@ -55,7 +55,6 @@
 </head>
 
 <?php
-//error_reporting( error_reporting() & ~E_NOTICE );
 //print_r($_SESSION);
 
 $m_level = $_SESSION['ref_l_id'];
@@ -63,7 +62,8 @@ if ($m_level != 1 and $m_level != 2) {
   Header("Location: ../index.php");
 }
 
-include('../condb.php')
+include('../condb.php');
+
 //clear session
 //unset($_SESSION['mem_name']);//clear session บางตัว
 // session_destroy();

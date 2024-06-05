@@ -24,7 +24,6 @@ if (isset($_POST['member']) && $_POST['member'] == "add") {
     $type = strrchr($_FILES['mem_img']['name'], ".");
     $newname = $numrand . $date1 . $type;
     $path_copy = $path . $newname;
-    // $path_link="../mem_img/".$newname;
     move_uploaded_file($_FILES['mem_img']['tmp_name'], $path_copy);
   } else {
     $newname = '';

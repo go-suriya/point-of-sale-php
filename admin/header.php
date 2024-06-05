@@ -7,6 +7,5 @@
   <div class="wrapper">
     <?php include("navbar.php"); ?>
     <?php include("sidebar.php"); ?>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

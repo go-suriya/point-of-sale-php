@@ -4,29 +4,10 @@
 <?php
 $mem_id = $_SESSION['mem_id'];
 
-$query_member = "SELECT * FROM tbl_member WHERE mem_id = $mem_id"
-  or die("Error : " . mysqlierror($query_member));
+$query_member = "SELECT * FROM tbl_member WHERE mem_id = $mem_id" or die("Error : " . mysqli_error($condb));
 $rs_member = mysqli_query($condb, $query_member);
 $row = mysqli_fetch_array($rs_member);
-//echo $row['mem_name'];
-//echo ($query_member);//test query
-
 ?>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function(e) {
-        $('#blah').attr('src', e.target.result);
-      }
-
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-</script>
-
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -37,17 +18,13 @@ $row = mysqli_fetch_array($rs_member);
 
 <!-- Main content -->
 <section class="content">
-
   <div class="card card-gray">
     <div class="card-header ">
       <h3 class="card-title">Edit Profile</h3>
-
     </div>
     <br>
     <div class="card-body">
-
       <div class="row">
-
         <div class="col-md-8">
           <form action="edit_profile_ok.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="member" value="edit_profile">
@@ -60,7 +37,6 @@ $row = mysqli_fetch_array($rs_member);
                 <input type="text" name="mem_name" class="form-control" id="mem_name" placeholder="" value="<?php echo $row['mem_name']; ?>">
               </div>
             </div>
-
 
             <div class="form-group row">
               <label for="" class="col-sm-2 col-form-label">Username </label>
@@ -76,24 +52,19 @@ $row = mysqli_fetch_array($rs_member);
               </div>
             </div>
 
-
             <div class="form-group row">
               <label for="" class="col-sm-2 col-form-label">img</label>
               <div class="col-sm-10">
-
                 ภาพเก่า<br>
-
                 <img src="../mem_img/<?php echo $row['mem_img']; ?>" width="150px">
                 <input type="hidden" name="mem_img2" value="<?php echo $row['mem_img']; ?>">
                 <br><br>
-
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-sm-2 col-form-label">img</label>
               <div class="col-sm-10">
-
                 เลือกไฟล์ใหม่<br>
 
                 <div class="custom-file">
@@ -115,7 +86,6 @@ $row = mysqli_fetch_array($rs_member);
 
       </div>
 
-
     </div>
     <div class="card-footer">
 
@@ -128,6 +98,18 @@ $row = mysqli_fetch_array($rs_member);
 
 <?php include('footer.php'); ?>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
 <script>
   $(function() {
     $(".datatable").DataTable();
@@ -142,7 +124,6 @@ $row = mysqli_fetch_array($rs_member);
     // });
   });
 </script>
-
 </body>
 
 </html>

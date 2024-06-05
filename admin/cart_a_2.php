@@ -25,7 +25,7 @@ if ($actdd == 'add' && !empty($p_id)) //เช็คว่า $act=='add' แล
 // echo '</pre>';
 // exit();
 
-if ($act == 'remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
+if ($act == 'remove' && !empty($p_id))  // ยกเลิกการสั่งซื้อ
 {
   unset($_SESSION['cart'][$p_id]);
 }
@@ -52,49 +52,47 @@ if ($act == 'update') {
       <td width="3%">ลบ</td>
     </tr>
     <?php
-
     $total = 0;
+
     if (!empty($_SESSION['cart'])) {
+      $ii = 0;
       foreach ($_SESSION['cart'] as $p_id => $qty) {
-        $sql = "SELECT * FROM tbl_product where p_id=$p_id";
+        $sql = "SELECT * FROM tbl_product WHERE p_id = $p_id";
         $query = mysqli_query($condb, $sql);
         $row = mysqli_fetch_array($query);
-        $sum = $row['p_price'] * $qty; //เอาราคาสินค้ามา * จำนวนในตระกร้า
-        $total += $sum; //ราคารวม ทั้ง ตระกร้า
-        $pqty = $row['p_qty']; //ประกาศตัวแปรจำนวนสินค้าใน stock
 
-        echo "<tr>";
-        echo "<td>" . $ii += 1 . "</td>";
-        echo "<td>"
-          . $row["p_name"]
-          . "<br>"
-          . "สต๊อก "
-          . $row['p_qty']
-          . " รายการ"
-          . "</td>";
-        echo "<td align='right'>" . number_format($row["p_price"], 2) . "</td>";
-        echo "<td align='right'>";
-
-        echo "<input type='number' name='amount[$p_id]' value='$qty' size='2'class='form-control' min='0'max='$pqty'/>";
-        echo "<td align='right'>" . number_format($sum, 2) . "</td>";
-
-        // remove product
-        echo "<td align='center'><a href='list_l.php?p_id=$p_id&act=remove' class='btn btn-danger btn-xs'>ลบ</a></td>";
-        echo "</tr>";
+        $sum = $row['p_price'] * $qty; // Calculate total price for this product
+        $total += $sum; // Add to total cart price
+        $pqty = $row['p_qty']; // Get stock quantity
+        $ii++;
+    ?>
+        <tr>
+          <td><?= $ii ?></td>
+          <td>
+            <?= $row["p_name"] ?><br>
+            สต๊อก <?= $row['p_qty'] ?> รายการ
+          </td>
+          <td align='right'><?= number_format($row["p_price"], 2) ?></td>
+          <td align='right'>
+            <input type='number' name='amount[<?= $p_id ?>]' value='<?= $qty ?>' size='2' class='form-control' min='0' max='<?= $pqty ?>' />
+          </td>
+          <td align='right'><?= number_format($sum, 2) ?></td>
+          <td align='center'>
+            <a href='list_l.php?p_id=<?= $p_id ?>&act=remove' class='btn btn-danger btn-xs'>ลบ</a>
+          </td>
+        </tr>
+      <?php
       }
-
-      echo "<tr>";
-      echo "<td></td>";
-      echo "<td></td>";
-      echo "<td></td>";
-
-      echo "<td bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
-      echo "<td align='right' bgcolor='#CEE7FF'>" . "<b>" . number_format($total, 2) . "</b>" . "</td>";
-      echo "<td align='left' bgcolor='#CEE7FF'></td>";
-      echo "</tr>";
+      ?>
+      <tr>
+        <td colspan='3'></td>
+        <td bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>
+        <td align='right' bgcolor='#CEE7FF'><b><?= number_format($total, 2) ?></b></td>
+        <td bgcolor='#CEE7FF'></td>
+      </tr>
+    <?php
     }
     ?>
-
   </table>
   <p align="right">
     <!-- <a href="list_l.php" class="btn btn-info">กลับหน้ารายการสินค้า</a> -->

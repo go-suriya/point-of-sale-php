@@ -1,6 +1,6 @@
 <?php
 include "../condb.php";
-//error_reporting( error_reporting() & ~E_NOTICE );
+// error_reporting(error_reporting() & ~E_NOTICE);
 session_start();
 
 // echo "<pre>";
@@ -57,8 +57,6 @@ $query2 = mysqli_query($condb, $sql2) or die("Error : " . mysqli_error($condb));
 $row = mysqli_fetch_array($query2);
 $order_id = $row["order_id"];
 
-// echo "order_id" . " = " . $row["order_id"];
-
 foreach ($_SESSION['cart'] as $p_id => $qty) {
   //query3 เพื่อให้รู้ว่า ใน ตระกร้าสินค้า มีการสั่งซื้อสินค้าอะไรบ้าง เพื่อให้เอาราคาสินค้าต่อหน่วย มาคูณกับ จำนวนสั่งซื้อทั้งหมดและเก็บลงตาราง order_detail
   $sql3 = "SELECT * FROM tbl_product WHERE p_id = $p_id";
@@ -94,7 +92,6 @@ foreach ($_SESSION['cart'] as $p_id => $qty) {
     $query5 = mysqli_query($condb, $sql5) or die("Error : " . mysqli_error($condb));
 
     echo "ยอดคงเหลือ" . $stc;
-    // echo "<hr>";
   }
 
   //exit();
@@ -119,6 +116,5 @@ if ($query1 && $query4) {
 ?>
 
 <script type="text/javascript">
-  // alert("<?php echo $msg; ?>");
   window.location = 'index.php?order_id=<?php echo $order_id; ?>&act=view&&save_ok=save_ok';
 </script>

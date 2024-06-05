@@ -10,10 +10,10 @@ $tableh = '<style>
             font-family: "freemono"; //คือ TH salaban แปลงชื่อเนื่องจาก function เดิม ดักการเพิ่มของไฟล์ font ซึ่งแก้แล้วไม่ได้
         }
     </style>' . '<p style="text-align:center"><img src="../logo_fordev22_2.png" width="250px" /></p>' .
-  '<h2 style="text-align:center"> เลขที่บิล ' . $order_id . '<br>' . ' ผู้ทำรายการขาย : ' . $rowmember['mem_name'] .
-  '<br> สถานะ : ' . $st . ' วันที่ทำรายการ : ' . date('d/m/Y', strtotime($rowmember['order_date'])) . '</h2>' .
+    '<h2 style="text-align:center"> เลขที่บิล ' . $order_id . '<br>' . ' ผู้ทำรายการขาย : ' . $rowmember['mem_name'] .
+    '<br> สถานะ : ' . $st . ' วันที่ทำรายการ : ' . date('d/m/Y', strtotime($rowmember['order_date'])) . '</h2>' .
 
-  '<table id="bg-table" width="100%" style="border-collapse: collapse;font-size:12pt;margin-top:8px;">
+    '<table id="bg-table" width="100%" style="border-collapse: collapse;font-size:12pt;margin-top:8px;">
         <tr style="border:1px solid #000;padding:4px;">
             <td  style="border-right:1px solid #000;padding:4px;text-align:center;"   width="10%">ลำดับ</td>
             <td  style="border-right:1px solid #000;padding:4px;text-align:center;"  width="15%">IMG</td>
@@ -24,11 +24,11 @@ $tableh = '<style>
         </tr>
     </thead>';
 foreach ($querypay as $rspay) {
-  $i += 1;
-  $tableb .= '<tr style="border:1px solid #000;padding:4px;">
+    $i += 1;
+    $tableb .= '<tr style="border:1px solid #000;padding:4px;">
             <td  style="border-right:1px solid #000;padding:4px;text-align:center;"width="10%">' . $i++ . '</td>
             <td  style="border-right:1px solid #000;padding:4px;text-align:center;"  width="15%">' .
-    '<img src="../p_img/' . $rspay['p_img'] . '"width="20%">' . '
+        '<img src="../p_img/' . $rspay['p_img'] . '"width="20%">' . '
             </td>
             <td  style="border-right:1px solid #000;padding:4px;text-align:center;"  width="15%">' . $rspay["p_name"] . '</td>
             <td  width="15%" style="border-right:1px solid #000;padding:4px;text-align:center;">' . $rspay["p_price"] . '</td>

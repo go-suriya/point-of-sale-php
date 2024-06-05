@@ -24,7 +24,6 @@
     /*background-color: #222;*/
     background-image: url("1.jpeg");
     background-repeat: no-repeat;
-
     background-size: 100%;
   }
 
@@ -42,13 +41,12 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-
     </div>
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
         <center><img width="250 px" src="logo_fordev22_2.png"><br>
-          <h3><b>FD22 POS </b>2021</h3> <br>
+          <h3><b>POS </b>2021</h3> <br>
           <h4>Please Login</h4>
         </center><br>
         <!--  <p class="login-box-msg">เข้าสู่ระบบ</p> -->
@@ -79,21 +77,17 @@
           </a> -->
           </div>
         </form>
-
         <!-- /.social-auth-links -->
-
       </div>
       <!-- /.login-card-body -->
-
     </div>
-
   </div>
   <!-- /.login-box -->
 </body>
-
 
 <!-- jQuery -->
 <script src="assets/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="assets/bootstrap.bundle.min.js"></script>
+
 </html>

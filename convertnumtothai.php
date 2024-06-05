@@ -48,6 +48,7 @@ function ReadNumber($number)
   }
   return $ret;
 }
+
 ## วิธีใช้งาน
 // $num1 = '3500.01';
 // $num2 = '120000.50';

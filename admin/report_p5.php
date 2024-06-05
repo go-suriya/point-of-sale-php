@@ -2,7 +2,6 @@
 <?php include("header.php"); ?>
 
 <?php
-
 $query_my_order = "SELECT p.p_name, SUM(o.total) AS totol
 FROM tbl_order_detail as o
 INNER JOIN tbl_product as p ON p.p_id=o.p_id
@@ -12,8 +11,6 @@ GROUP BY o.p_id ORDER BY  totol DESC LIMIT 5
 "
   or die("Error : " . mysqli_error($condb));
 $rs_my_order = mysqli_query($condb, $query_my_order);
-//echo ($query_my_order);
-//exit();
 ?>
 
 <!-- Content Header (Page header) -->
@@ -27,60 +24,46 @@ $rs_my_order = mysqli_query($condb, $query_my_order);
   <div class="card card-gray">
     <div class="card-header ">
       <h3 class="card-title">Report Top 5</h3>
-
     </div>
     <br>
     <div class="card-body">
       <div class="row">
-
         <div class="col-md-12">
           <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
           <table class="table" id="datatable">
             <thead>
               <tr>
-
                 <th>ชื่อสินค้า</th>
                 <th>จำนวนยอดขาย</th>
-
               </tr>
             </thead>
             <tbody>
-              <?php
-              foreach ($rs_my_order as $rs_order) {
-                echo "<tr>";
-                echo "<td>" . $rs_order['p_name'] . "</td>";
-                echo "<td>" . $rs_order['totol'] . "</td>";
-                echo "</tr>";
-              }
-              ?>
-
+              <?php foreach ($rs_my_order as $rs_order) : ?>
+                <tr>
+                  <td><?php echo htmlspecialchars($rs_order['p_name']); ?></td>
+                  <td><?php echo htmlspecialchars($rs_order['totol']); ?></td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
-
         </div>
-
       </div>
-
     </div>
   </div>
   <div class="card-footer">
-
   </div>
-
   </div>
-
 </section>
 <!-- /.content -->
 
 <?php include('footer2.php'); ?>
+
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script>
   $(function() {
-
     $('#container').highcharts({
       data: {
         table: 'datatable',
@@ -135,7 +118,6 @@ $rs_my_order = mysqli_query($condb, $query_my_order);
       },
       legend: {
         itemStyle: {
-
           fontWeight: 'bold'
         }
       },
@@ -162,7 +144,6 @@ $rs_my_order = mysqli_query($condb, $query_my_order);
     // });
   });
 </script>
-
 </body>
 
 </html>

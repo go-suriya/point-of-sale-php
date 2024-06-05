@@ -4,7 +4,7 @@
   <div class="float-right d-none d-sm-block">
     <b>Version</b> 2.2.0
   </div>
-  <strong>Copyright &copy; 2021 POS System<a href="http://google.com/">X</a>.</strong> All rights
+  <strong>Copyright &copy;POS System<a href="http://google.com/">X</a>.</strong> All rights
   reserved.
 </footer>
 

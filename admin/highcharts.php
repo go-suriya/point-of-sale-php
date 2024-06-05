@@ -23,9 +23,7 @@
 
 <body>
   <h1>Hello, world!</h1>
-
   <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
   <table class="table" id="datatable">
     <thead>
       <tr>
@@ -82,7 +80,6 @@
             text: 'Units'
           }
         },
-
         tooltip: {
           formatter: function() {
             return '<b>' + this.series.name + '</b><br/>' +
@@ -92,7 +89,6 @@
       });
     });
   </script>
-
 </body>
 
 </html>
